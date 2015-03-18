@@ -14,8 +14,15 @@ template "/etc/update-motd.d/00-header" do
   )
 end
 
+cookbook_file "/etc/update-motd.d/10-#{node["application_name"]}" do
+  source "#{node["application_name"]}/10-motd"
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
 bash "update motd" do
   code <<-EOH
-  run-parts -v --exit-on-error /etc/update-motd.d/
+  run-parts -v --exit-on-error /etc/update-motd.d
   EOH
 end

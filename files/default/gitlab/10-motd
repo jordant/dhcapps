@@ -1,0 +1,3 @@
+#!/bin/bash
+
+printf "Default Login: root\nDefault Password: 5iveL!fe\n"
