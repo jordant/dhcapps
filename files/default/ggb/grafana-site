@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+        ServerName graphite
+        DocumentRoot /opt/graphite/webapp
+        ErrorLog /opt/graphite/storage/log/webapp/error.log
+        CustomLog /opt/graphite/storage/log/webapp/access.log common
+        WSGIDaemonProcess graphite user=www-data group=www-data processes=5 threads=5 python-path=/usr
+        WSGIScriptAlias / /opt/graphite/conf/graphite.wsgi
+        <Directory /opt/graphite/conf>
+           Options All
+           AllowOverride All
+           Require all granted
+        </Directory>
+        Alias /grafana /opt/grafana
+        <Directory /opt/grafana>
+                Options All
+                AllowOverride All
+                Require all granted
+        </Directory>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS
+        Header set Access-Control-Allow-Headers "origin, authorization, accept"
+
+        <Location /elasticsearch>
+         ProxyPass http://localhost:9300
+        </Location>
+
+</VirtualHost>

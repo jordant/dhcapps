@@ -1,0 +1,11 @@
+export OPENSSL="/usr/bin/openssl"
+export KEY_CONFIG="/etc/openvpn/easy-rsa/openssl-1.0.0.cnf"
+export KEY_DIR="/etc/openvpn/easy-rsa/keys"
+export KEY_SIZE="1024"
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="VA"
+export KEY_CITY="Ashburn"
+export KEY_ORG="OpenVPN"
+export KEY_EMAIL="admin@localhost"
+export KEY_NAME=openvpn
+export KEY_OU=openvpn
